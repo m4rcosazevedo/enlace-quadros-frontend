@@ -1,6 +1,5 @@
 import { Typography } from '../components/typography/typography'
 import { alertService } from '../services/alert.service'
-import { Slider } from '../components/slider/slider'
 import { Container } from '../assets/styles/base'
 import {Products} from "../components/products/products";
 import {productService} from "../services/product";
@@ -14,24 +13,17 @@ function Home({ products }) {
   }
 
   return (
-    <>
-      <Slider />
-
-      <Container>
-
-        <Typography>Últimos Lançamentos</Typography>
-
-        <Row>
-          <Col xs={12} sm={8} lg={9} className="mb-3">
-            <Products products={products.body?.data} itemsPerRow={3} />
-          </Col>
-          <Col xs={12} sm={4} lg={3} className="mb-3">
-            <Newsletter />
-          </Col>
-        </Row>
-
-      </Container>
-    </>
+    <Container>
+      <Typography>Últimos Lançamentos</Typography>
+      <Row>
+        <Col xs={12} sm={8} lg={9} className="mb-3">
+          <Products products={products.body?.data} itemsPerRow={3} />
+        </Col>
+        <Col xs={12} sm={4} lg={3} className="mb-3">
+          <Newsletter />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

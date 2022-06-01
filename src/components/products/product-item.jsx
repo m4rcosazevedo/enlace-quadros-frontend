@@ -1,4 +1,3 @@
-import { createElement } from 'react'
 import Link from 'next/link'
 import { shuffle } from '../../utils'
 import NoSsr from '../no-ssr/no-ssr'
@@ -18,8 +17,11 @@ const getImage = (uri) => {
 
 const colors = shuffle(['#16a085', '#e67e22', '#2980b9', '#9b59b6', '#34495e', '#7f8c8d'])
 
-export const ProductItem = ({ product }) => {
-  const cat = product.categories[0]
+export const ProductItem = ({ product, category = null }) => {
+  const cat = category
+    ? product.categories.find( item => item.id === category.id)
+    : product.categories[0]
+
   const productUrl = `/${cat.slug}/${product.slug}`
 
   return (

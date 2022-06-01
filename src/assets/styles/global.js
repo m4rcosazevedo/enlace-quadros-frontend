@@ -30,6 +30,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .page-item {
+    &.active .page-link {
+      background-color: var(--dark);
+      border-color: var(--dark);
+    }
+
+    .page-link {
+      color: var(--dark);
+    }
+  }
 
   .btn-primary {
     background-color: var(--dark);
