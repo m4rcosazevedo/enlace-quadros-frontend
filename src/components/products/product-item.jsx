@@ -1,6 +1,15 @@
+import { createElement } from 'react'
 import Link from 'next/link'
-import { shuffle, sortNumber } from '../../utils'
-import * as P from './product.styled'
+import { shuffle } from '../../utils'
+import NoSsr from '../no-ssr/no-ssr'
+import P, {
+  ProductCard,
+  ProductCategories,
+  ProductCategory,
+  ProductDescription,
+  ProductImage,
+  ProductTitle
+} from "./product.styled";
 
 const getImage = (uri) => {
   const URL_BASE_IMAGE = 'http://localhost:5004/storage/'
@@ -14,26 +23,28 @@ export const ProductItem = ({ product }) => {
   const productUrl = `/${cat.slug}/${product.slug}`
 
   return (
-    <P.ProductCard>
-      <Link href={productUrl}>
-        <a><P.ProductImage src={getImage(product.image)} alt={product.name} /></a>
-      </Link>
+    <NoSsr>
+      <ProductCard>
+        <Link href={productUrl}>
+          <a><ProductImage src={getImage(product.image)} alt={product.name} /></a>
+        </Link>
 
-      <P.ProductCategories>
-        {product.categories.map((category, index) => (
-          <Link href={`/${category.slug}`} key={category.slug}>
-            <P.ProductCategory color={colors[index]}>
-              {category.name}
-            </P.ProductCategory>
-          </Link>
-        ))}
-      </P.ProductCategories>
+        <ProductCategories>
+          {product.categories.map((category, index) => (
+            <Link href={`/${category.slug}`} key={category.slug}>
+              <a>
+                <ProductCategory color={colors[index]}>{category.name}</ProductCategory>
+              </a>
+            </Link>
+          ))}
+        </ProductCategories>
 
-      <P.ProductTitle href={productUrl}>
-        <a>{product.name}</a>
-      </P.ProductTitle>
+        <Link href={productUrl}>
+          <a><ProductTitle>{product.name}</ProductTitle></a>
+        </Link>
 
-      <P.ProductDescription>{product.description}</P.ProductDescription>
-    </P.ProductCard>
+        <ProductDescription>{product.description}</ProductDescription>
+      </ProductCard>
+    </NoSsr>
   )
 }

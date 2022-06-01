@@ -5,6 +5,8 @@ import { Container } from '../assets/styles/base'
 import {Products} from "../components/products/products";
 import {productService} from "../services/product";
 import {between, not} from "../utils";
+import {Col, Row} from "reactstrap";
+import {Newsletter} from "../components/newsletter/newsletter";
 
 function Home({ products }) {
   if (not(between(products.code, 200, 299))) {
@@ -19,10 +21,15 @@ function Home({ products }) {
 
         <Typography>Últimos Lançamentos</Typography>
 
-        <Products products={products.body?.data} />
+        <Row>
+          <Col xs={12} sm={8} lg={9} className="mb-3">
+            <Products products={products.body?.data} itemsPerRow={3} />
+          </Col>
+          <Col xs={12} sm={4} lg={3} className="mb-3">
+            <Newsletter />
+          </Col>
+        </Row>
 
-        <button className="btn btn-success m-1" onClick={() => alertService.success('Success!!')}>Success</button>
-        <button className="btn btn-danger m-1" onClick={() => alertService.error('Error :(')}>Error</button>
       </Container>
     </>
   )
@@ -34,7 +41,7 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=10, stale-while-revalidate=59'
   )
 
-  const products = await productService.findAll()
+  const products = await productService.findAll({ limit: 9 })
 
   return {
     props: {

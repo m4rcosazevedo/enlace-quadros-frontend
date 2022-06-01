@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import {useRouter} from 'next/router'
+import {useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 
-import { alertService, AlertType } from '../../services/alert.service'
+import {alertService, AlertType} from '../../services/alert.service'
 
-const MILLISECONDS = 1000
-const ONE_SECOND = MILLISECONDS
+const ONE_SECOND_MILLISECONDS = 1000
+const TIMEOUT = 30 * ONE_SECOND_MILLISECONDS
 
 export const Alert  = ({ id, fade }) => {
   const mounted = useRef(false)
@@ -30,7 +30,7 @@ export const Alert  = ({ id, fade }) => {
           const timeout = setTimeout(_ => {
             removeAlert(alert)
             clearTimeout(timeout)
-          }, 10 * ONE_SECOND)
+          }, TIMEOUT)
         }
       }
     })

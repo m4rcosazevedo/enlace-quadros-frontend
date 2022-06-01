@@ -23,5 +23,41 @@ export const GlobalStyle = createGlobalStyle`
   a {
     cursor: pointer;
     text-decoration: none;
+
+    &, &:hover {
+      color: var(--dark);
+      text-decoration: none;
+    }
+  }
+
+
+  .btn-primary {
+    background-color: var(--dark);
+    border-color: var(--dark);
+
+    &.focus,
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, .5);
+    }
+
+    &:hover,
+    &.focus,
+    &:focus,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active {
+      background-color: var(--gray);
+      border-color: var(--gray);
+    }
+  }
+
+  .alert {
+    position: fixed;
+    z-index: 90;
+    min-width: 50vw;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    box-shadow: 0 0 100vw 10px rgba(0, 0, 0, .5);
   }
 `

@@ -30,7 +30,7 @@ export const ProductCategories = styled.div`
   gap: 5px;
 `
 
-export const ProductCategory = styled.a`
+export const ProductCategory = styled.div`
   background-color: ${({ color }) => color};
   color: #ffffff;
   font-size: .75rem;
@@ -38,22 +38,36 @@ export const ProductCategory = styled.a`
   border-radius: 2px;
 
   &:hover {
-    opacity: .8;
+    opacity: .9;
     text-decoration: none;
     color: #ffffff;
   }
 `
 
-export const ProductTitle = styled.a`
+export const ProductTitle = styled.div`
   font-weight: bold;
   font-size: .95rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--dark);
+  
+  &, &:hover {
+    color: var(--dark);
+  }
 `
 
 export const ProductDescription = styled.div`
   font-size: .9rem;
   color: #909090;
 `
+
+export default function ProductStyled () {
+  return {
+    Test1: () => styled.div`
+      font-size: 2rem;
+    `,
+    Test2: () => styled.div`
+      font-size: 4rem;
+    `,
+  }
+}
