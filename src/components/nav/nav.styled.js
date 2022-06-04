@@ -5,14 +5,14 @@ export const Navbar = styled.div`
   z-index: 10;
 `
 
-export const Dropdown = styled.div.attrs({
-  className: 'bg-dark'
-})`
+export const Dropdown = styled.div`
   position: fixed;
   top: auto;
   left: 0;
   right: 0;
   display: none;
+  background: rgb(52,58,64);
+  background: linear-gradient(180deg, rgba(52,58,64,1) 0%, rgba(83,90,97,1) 100%);
 `
 
 export const DropdownWrap = styled.div`
@@ -31,7 +31,7 @@ export const DropdownItem = styled.a`
     text-decoration: none;
   }
   &:hover {
-    background: rgba(0, 0, 0, .2)
+    background: rgba(0, 0, 0, .1)
   }
   
 `

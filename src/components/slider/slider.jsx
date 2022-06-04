@@ -28,7 +28,7 @@ const options = {
 
 export const Slider = () => {
   return (
-    <Carousel {...options}>
+    <Carousel {...options} className="mb-3">
       {slider.map(({ image }, index) => (
         <CarouselItem key={index}>
           <CarouselImage src={image} alt={image} />
