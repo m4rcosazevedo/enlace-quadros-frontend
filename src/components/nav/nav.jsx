@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Container } from '../../assets/styles/base'
-import {Dropdown, DropdownItem, DropdownWrap, Navbar, NavItemDropdown} from './nav.styled'
+import { Dropdown, DropdownItem, DropdownWrap, Navbar, NavItemDropdown } from './nav.styled'
 
 export const Nav = ({ menus = [] }) => {
   return (

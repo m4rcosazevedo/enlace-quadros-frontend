@@ -22,12 +22,11 @@ function Category({ categoryProducts }) {
 
   return (
     <Container>
-      <Typography>{body.category.name}</Typography>
+      <Typography>{body.category?.name}</Typography>
 
       <Products products={body.data} category={body.category} />
 
-      <Pagination meta={body.meta} url={`/${body.category.slug}`} />
-
+      <Pagination meta={body.meta} url={`/${body.category?.slug}`} />
     </Container>
   )
 }

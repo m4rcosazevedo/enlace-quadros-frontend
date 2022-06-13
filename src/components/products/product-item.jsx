@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import { shuffle } from '../../utils'
 import NoSsr from '../no-ssr/no-ssr'
-import P, {
+import {
   ProductCard,
   ProductCategories,
   ProductCategory,
   ProductDescription,
   ProductImage,
   ProductTitle
-} from "./product.styled";
+} from './product.styled'
+import {imageUtil} from '../../utils/image-util'
+import { HTML } from '../html/html'
 
 const colors = shuffle(['#16a085', '#e67e22', '#2980b9', '#9b59b6', '#34495e', '#7f8c8d'])
 
@@ -23,7 +25,7 @@ export const ProductItem = ({ product, category = null }) => {
     <NoSsr>
       <ProductCard>
         <Link href={productUrl}>
-          <a><ProductImage src={product.image.url} alt={product.image.filename} /></a>
+          <a><ProductImage src={imageUtil.thubnail(product.image.url.origin, '/' + product.image.filename)} alt={product.image.filename} /></a>
         </Link>
 
         <ProductCategories>
@@ -40,7 +42,7 @@ export const ProductItem = ({ product, category = null }) => {
           <a><ProductTitle>{product.name}</ProductTitle></a>
         </Link>
 
-        <ProductDescription>{product.description}</ProductDescription>
+        <ProductDescription><HTML>{product.description}</HTML></ProductDescription>
       </ProductCard>
     </NoSsr>
   )

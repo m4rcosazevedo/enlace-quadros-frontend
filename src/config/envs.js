@@ -1,7 +1,10 @@
 export default {
-  API_URL: 'http://localhost:5004/api',
+  API_URL: process.env.NEXT_PUBLIC_API_URL,
   SOCIAL: {
-    WHATSAPP: 'https://wa.me/5577988170126',
-    INSTAGRAM: 'https://instagr.am/enlacequadros'
+    WHATSAPP: process.env.NEXT_PUBLIC_SOCIAL_WHATSAPP,
+    INSTAGRAM: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM
+  },
+  AWS: {
+    BUCKET: process.env.NEXT_PUBLIC_AWS_BUCKET
   }
 }

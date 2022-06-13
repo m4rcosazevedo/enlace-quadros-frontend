@@ -14,7 +14,7 @@ export const ProductCard = styled.div`
 
 export const ProductImage = styled.img`
   max-width: 100%;
-  height: 350px;
+  height: 280px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -24,10 +24,11 @@ export const ProductCategories = styled.div`
   position: absolute;
   top: 15px;
   right: 15px;
-
   display: inline-flex;
   flex-wrap: wrap;
   gap: 5px;
+  left: 15px;
+  flex-direction: row-reverse;
 `
 
 export const ProductCategory = styled.div`
@@ -59,6 +60,10 @@ export const ProductTitle = styled.div`
 export const ProductDescription = styled.div`
   font-size: .9rem;
   color: #909090;
+  min-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export default function ProductStyled () {
