@@ -27,7 +27,7 @@ class ImageUtil {
     return `${prefix}/${urlEncode}`
   }
 
-  thubnail (prefix, image) {
+  thumbnail (prefix, image) {
     return this.generate({ prefix, image, width: 260, height: 280 })
   }
 

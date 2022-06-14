@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps, categories }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <GlobalStyle />
@@ -50,6 +51,7 @@ function MyApp({ Component, pageProps, categories }) {
           <Component {...pageProps} {...{categories}} />
         </Layout>
       </ThemeProvider>
+      <div id="modal-root" />
     </>
   )
 }

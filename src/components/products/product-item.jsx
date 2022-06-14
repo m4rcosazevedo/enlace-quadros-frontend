@@ -1,18 +1,7 @@
-import Link from 'next/link'
-import { shuffle } from '../../utils'
-import NoSsr from '../no-ssr/no-ssr'
-import {
-  ProductCard,
-  ProductCategories,
-  ProductCategory,
-  ProductDescription,
-  ProductImage,
-  ProductTitle
-} from './product.styled'
-import {imageUtil} from '../../utils/image-util'
+import { ProductCard, ProductDescription, ProductImage, ProductTitle } from './product.styled'
+import { ProductCategories } from './product-categories'
 import { HTML } from '../html/html'
-
-const colors = shuffle(['#16a085', '#e67e22', '#2980b9', '#9b59b6', '#34495e', '#7f8c8d'])
+import Link from 'next/link'
 
 export const ProductItem = ({ product, category = null }) => {
   const cat = category
@@ -22,28 +11,18 @@ export const ProductItem = ({ product, category = null }) => {
   const productUrl = `/${cat?.slug}/${product.slug}`
 
   return (
-    <NoSsr>
-      <ProductCard>
-        <Link href={productUrl}>
-          <a><ProductImage src={imageUtil.thubnail(product.image.url.origin, '/' + product.image.filename)} alt={product.image.filename} /></a>
-        </Link>
+    <ProductCard>
+      <Link href={productUrl}>
+        <a><ProductImage url={product.image.url} thumbnail /></a>
+      </Link>
 
-        <ProductCategories>
-          {product.categories.map((category, index) => (
-            <Link href={`/${category.slug}`} key={category.slug}>
-              <a>
-                <ProductCategory color={colors[index]}>{category.name}</ProductCategory>
-              </a>
-            </Link>
-          ))}
-        </ProductCategories>
+      <ProductCategories categories={product.categories} />
 
-        <Link href={productUrl}>
-          <a><ProductTitle>{product.name}</ProductTitle></a>
-        </Link>
+      <Link href={productUrl}>
+        <a><ProductTitle>{product.name}</ProductTitle></a>
+      </Link>
 
-        <ProductDescription><HTML>{product.description}</HTML></ProductDescription>
-      </ProductCard>
-    </NoSsr>
+      <ProductDescription><HTML>{product.description}</HTML></ProductDescription>
+    </ProductCard>
   )
 }

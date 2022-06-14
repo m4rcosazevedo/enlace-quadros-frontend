@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Image } from '../image/image'
 
 export const ProductCard = styled.div`
   background: #fff;
@@ -12,37 +13,12 @@ export const ProductCard = styled.div`
   }
 `
 
-export const ProductImage = styled.img`
+export const ProductImage = styled(Image)`
   max-width: 100%;
   height: 280px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 10px;
-`
-
-export const ProductCategories = styled.div`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  left: 15px;
-  flex-direction: row-reverse;
-`
-
-export const ProductCategory = styled.div`
-  background-color: ${({ color }) => color};
-  color: #ffffff;
-  font-size: .75rem;
-  padding: 2px 7px;
-  border-radius: 2px;
-
-  &:hover {
-    opacity: .9;
-    text-decoration: none;
-    color: #ffffff;
-  }
 `
 
 export const ProductTitle = styled.div`
@@ -65,14 +41,3 @@ export const ProductDescription = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `
-
-export default function ProductStyled () {
-  return {
-    Test1: () => styled.div`
-      font-size: 2rem;
-    `,
-    Test2: () => styled.div`
-      font-size: 4rem;
-    `,
-  }
-}

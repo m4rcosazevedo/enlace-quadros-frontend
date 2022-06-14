@@ -1,19 +1,22 @@
+import { AlertError } from '../components/alert-error/alert-error'
 import { Typography } from '../components/typography/typography'
-import { alertService } from '../services/alert.service'
+import { Newsletter } from '../components/newsletter/newsletter'
+import { Products } from '../components/products/products'
+import { productService } from '../services/product'
 import { Container } from '../assets/styles/base'
-import {Products} from "../components/products/products";
-import {productService} from "../services/product";
-import {between, not} from "../utils";
-import {Col, Row} from "reactstrap";
-import {Newsletter} from "../components/newsletter/newsletter";
+import { between, not } from '../utils'
+import { Col, Row } from 'reactstrap'
+import {Head} from "../components/head/head";
 
 function Home({ products }) {
-  if (not(between(products.code, 200, 299))) {
-    alertService.error(products.body?.message || 'Ops! Ocorreu um erro')
+  if (not(between(products?.code, 200, 299))) {
+    return <AlertError message={products?.body?.message || 'Ops! Ocorreu um erro'} />
   }
 
   return (
     <Container>
+      <Head title="Enlace Quadros" description="Quadros personalizados e criados pensando em cada cliente" />
+
       <Typography>Últimos Lançamentos</Typography>
       <Row>
         <Col xs={12} sm={8} lg={9} className="mb-3">

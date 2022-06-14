@@ -1,27 +1,22 @@
+import { AlertError } from '../../components/alert-error/alert-error'
 import { Pagination } from '../../components/pagination/pagination'
 import { Typography } from '../../components/typography/typography'
 import { Products } from '../../components/products/products'
-import { alertService } from '../../services/alert.service'
 import { productService } from '../../services/product'
 import { Container } from '../../assets/styles/base'
 import { between, not } from '../../utils'
+import {Head} from "../../components/head/head";
 
 function Category({ categoryProducts }) {
   const { body, code } = categoryProducts
 
   if (not(between(code, 200, 299))) {
-    const message = body?.message || 'Ops! Ocorreu um erro'
-    alertService.error(message)
-
-    return (
-      <Container>
-        <Typography>{message}</Typography>
-      </Container>
-    )
+    return <AlertError message={body?.message || 'Ops! Ocorreu um erro'} />
   }
 
   return (
     <Container>
+      <Head title={body.category?.name} description={`Fique por dentros da nossa categoria: ${body.category?.name}`} />
       <Typography>{body.category?.name}</Typography>
 
       <Products products={body.data} category={body.category} />
