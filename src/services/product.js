@@ -7,14 +7,15 @@ const DEFAULT_PARAMS = {
 
 class ProductService extends Service {
   async findAll (params = DEFAULT_PARAMS) {
-    const { category, limit, page } = params
+    const { category, limit, page, view = false } = params
 
     return this.request({
       url: '/products',
       params: {
         ...(category && { category }),
         ...(limit && { limit }),
-        ...(page && { page })
+        ...(page && { page }),
+        ...(view && { view })
       }
     })
   }

@@ -1,15 +1,11 @@
-import { BannerWhatsapp } from '../components/ui/banner-whatsapp/banner-whatsapp'
 import { AlertError } from '../components/alert-error/alert-error'
 import { Typography } from '../components/typography/typography'
-import { Newsletter } from '../components/newsletter/newsletter'
 import { Products } from '../components/products/products'
 import { productService } from '../services/product'
-import { Container } from '../assets/styles/base'
 import { Head } from '../components/head/head'
 import { between, not } from '../utils'
-import { Col, Row } from 'reactstrap'
 
-function Home({ products }) {
+function Home({ products, mostViewedProducts }) {
   if (not(between(products?.code, 200, 299))) {
     return <AlertError message={products?.body?.message || 'Ops! Ocorreu um erro'} />
   }
@@ -20,6 +16,9 @@ function Home({ products }) {
 
       <Typography>Últimos Lançamentos</Typography>
       <Products products={products.body?.data} itemsPerRow={3} />
+
+      <Typography>Mais vistos</Typography>
+      <Products products={mostViewedProducts.body?.data} itemsPerRow={3} />
     </>
   )
 }
@@ -30,11 +29,13 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=10, stale-while-revalidate=59'
   )
 
-  const products = await productService.findAll({ limit: 9 })
+  const products = await productService.findAll({ limit: 6 })
+  const mostViewedProducts = await productService.findAll({ limit: 6, view: true })
 
   return {
     props: {
-      products
+      products,
+      mostViewedProducts
     },
   }
 }
