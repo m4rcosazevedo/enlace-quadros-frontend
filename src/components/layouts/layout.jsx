@@ -1,6 +1,9 @@
+import { BannerWhatsapp } from '../ui/banner-whatsapp/banner-whatsapp'
+import { Newsletter } from '../newsletter/newsletter'
 import { Container } from '../../assets/styles/base'
 import { Header } from '../header/header'
 import { Slider } from '../slider/slider'
+import { Col, Row } from 'reactstrap'
 import { Nav } from '../nav/nav'
 import Head from 'next/head'
 
@@ -16,7 +19,22 @@ export const Layout = ({ children, categories, sliders }) => (
 
     <Nav menus={categories.body?.data} />
     <Slider sliders={sliders.body?.data} />
-    <main>{children}</main>
+
+    <Container>
+      <Row>
+        <Col xs={12} sm={8} lg={9} className="mb-3">
+          <main>
+            {children}
+          </main>
+        </Col>
+        <Col xs={12} sm={4} lg={3} className="mb-3">
+          <aside>
+            <BannerWhatsapp />
+            <Newsletter />
+          </aside>
+        </Col>
+      </Row>
+    </Container>
 
     <footer className="py-3 mt-3 bg-dark text-light text-center">
       <Container>

@@ -1,7 +1,7 @@
 import { Col, Row } from 'reactstrap'
 import { ProductItem } from './product-item'
 
-export const Products = ({ products = [], itemsPerRow = 4, category = null }) => {
+export const Products = ({ products = [], itemsPerRow = 3, category = null }) => {
   return (
     <Row>
       {products.map(product => (

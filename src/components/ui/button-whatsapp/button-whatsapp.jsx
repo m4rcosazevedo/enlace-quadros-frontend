@@ -13,7 +13,7 @@ const Btn = styled(ExternalLink)`
   background: #13ab4e;
 
   &, &:hover {
-    color: #fff;
+    color: var(--light);
     text-decoration: none;
   }
 

@@ -14,7 +14,6 @@ export const ProductCard = styled.div`
 `
 
 export const ProductImage = styled(Image)`
-  max-width: 100%;
   height: 280px;
   object-fit: cover;
   border-radius: 4px;

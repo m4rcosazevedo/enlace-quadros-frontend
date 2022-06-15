@@ -3,7 +3,6 @@ import { Pagination } from '../../components/pagination/pagination'
 import { Typography } from '../../components/typography/typography'
 import { Products } from '../../components/products/products'
 import { productService } from '../../services/product'
-import { Container } from '../../assets/styles/base'
 import { between, not } from '../../utils'
 import {Head} from "../../components/head/head";
 
@@ -15,14 +14,14 @@ function Category({ categoryProducts }) {
   }
 
   return (
-    <Container>
+    <>
       <Head title={body.category?.name} description={`Fique por dentros da nossa categoria: ${body.category?.name}`} />
       <Typography>{body.category?.name}</Typography>
 
       <Products products={body.data} category={body.category} />
 
       <Pagination meta={body.meta} url={`/${body.category?.slug}`} />
-    </Container>
+    </>
   )
 }
 

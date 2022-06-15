@@ -5,7 +5,6 @@ import { AlertError } from '../../../components/alert-error/alert-error'
 import { Typography } from '../../../components/typography/typography'
 import { Products } from '../../../components/products/products'
 import { productService } from '../../../services/product'
-import { Container } from '../../../assets/styles/base'
 import { HTML } from '../../../components/html/html'
 import { Head } from '../../../components/head/head'
 import {between, not} from '../../../utils'
@@ -21,8 +20,7 @@ function ProductDetails ({ productDetail, relatedProducts }) {
   const product = body.data;
 
   return (
-    <Container>
-
+    <>
       <Head title={product.name} description={product.description} />
 
       <Typography>Detalhes do produto</Typography>
@@ -46,8 +44,8 @@ function ProductDetails ({ productDetail, relatedProducts }) {
 
       <Typography>Produtos Relacionados</Typography>
 
-      {relatedProducts?.code === 200 && <Products products={relatedProducts.body?.data.filter(item => item.id !== product.id )} itemsPerRow={4} />}
-    </Container>
+      {relatedProducts?.code === 200 && <Products products={relatedProducts.body?.data.filter(item => item.id !== product.id )} />}
+    </>
   )
 }
 

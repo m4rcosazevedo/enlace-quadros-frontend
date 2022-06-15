@@ -1,14 +1,15 @@
 import { imageUtil } from '../../utils/image-util'
+import { Image as Img } from './image.styled'
 
-export const Image = ({ url, thumbnail = false, custom }) => {
+export const Image = ({ url, thumbnail = false, custom, ...props }) => {
 
   if (custom) {
-    return <img src={imageUtil[custom](url.origin, '/' + url.filename)} alt={url.filename} />
+    return <Img {...props} src={imageUtil[custom](url.origin, '/' + url.filename)} alt={url.filename} />
   }
 
   if (thumbnail) {
-    return <img src={imageUtil.thumbnail(url.origin, '/' + url.filename)} alt={url.filename} />
+    return <Img {...props} src={imageUtil.thumbnail(url.origin, '/' + url.filename)} alt={url.filename} />
   }
 
-  return <img src={imageUtil.cover(url.origin, '/' + url.filename)} alt={url.filename} />
+  return <Img {...props} src={imageUtil.cover(url.origin, '/' + url.filename)} alt={url.filename} />
 }

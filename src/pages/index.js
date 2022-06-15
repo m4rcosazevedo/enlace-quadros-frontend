@@ -1,12 +1,13 @@
+import { BannerWhatsapp } from '../components/ui/banner-whatsapp/banner-whatsapp'
 import { AlertError } from '../components/alert-error/alert-error'
 import { Typography } from '../components/typography/typography'
 import { Newsletter } from '../components/newsletter/newsletter'
 import { Products } from '../components/products/products'
 import { productService } from '../services/product'
 import { Container } from '../assets/styles/base'
+import { Head } from '../components/head/head'
 import { between, not } from '../utils'
 import { Col, Row } from 'reactstrap'
-import {Head} from "../components/head/head";
 
 function Home({ products }) {
   if (not(between(products?.code, 200, 299))) {
@@ -14,19 +15,12 @@ function Home({ products }) {
   }
 
   return (
-    <Container>
+    <>
       <Head title="Enlace Quadros" description="Quadros personalizados e criados pensando em cada cliente" />
 
       <Typography>Últimos Lançamentos</Typography>
-      <Row>
-        <Col xs={12} sm={8} lg={9} className="mb-3">
-          <Products products={products.body?.data} itemsPerRow={3} />
-        </Col>
-        <Col xs={12} sm={4} lg={3} className="mb-3">
-          <Newsletter />
-        </Col>
-      </Row>
-    </Container>
+      <Products products={products.body?.data} itemsPerRow={3} />
+    </>
   )
 }
 

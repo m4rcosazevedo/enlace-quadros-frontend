@@ -13,7 +13,9 @@ export const ProductItem = ({ product, category = null }) => {
   return (
     <ProductCard>
       <Link href={productUrl}>
-        <a><ProductImage url={product.image.url} thumbnail /></a>
+        <a>
+          <ProductImage url={product.image.url} thumbnail />
+        </a>
       </Link>
 
       <ProductCategories categories={product.categories} />
