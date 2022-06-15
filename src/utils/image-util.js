@@ -34,6 +34,10 @@ class ImageUtil {
   cover (prefix, image) {
     return this.generate({ prefix, image, width: 500, height: 600 })
   }
+
+  featured (prefix, image) {
+    return this.generate({ prefix, image, width: 1920, height: 450 })
+  }
 }
 
 export const imageUtil = new ImageUtil()

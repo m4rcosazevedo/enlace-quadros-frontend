@@ -1,11 +1,6 @@
 import {Carousel, CarouselImage, CarouselItem} from './slider.styled'
 import 'react-multi-carousel/lib/styles.css';
 
-const slider = [
-  { image: '/images/slider/1.jpg' },
-  { image: '/images/slider/2.jpg' }
-]
-
 const responsive = {
   tablet: {
     breakpoint: { max: 8000, min: 464 },
@@ -26,12 +21,12 @@ const options = {
   responsive
 }
 
-export const Slider = () => {
+export const Slider = ({ sliders }) => {
   return (
     <Carousel {...options} className="mb-3">
-      {slider.map(({ image }, index) => (
+      {sliders.map((slide, index) => (
         <CarouselItem key={index}>
-          <CarouselImage src={image} alt={image} />
+          <CarouselImage url={slide.image} custom="featured" />
         </CarouselItem>
       ))}
     </Carousel>

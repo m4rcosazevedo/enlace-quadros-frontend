@@ -10,6 +10,7 @@ import { GlobalStyle } from '../assets/styles/global'
 import { Layout } from '../components/layouts/layout'
 import { Alert } from '../components/alert/alert'
 import { between, not } from '../utils'
+import {sliderService} from "../services/slider";
 
 library.add(fab)
 
@@ -19,7 +20,7 @@ const theme = {
   },
 }
 
-function MyApp({ Component, pageProps, categories }) {
+function MyApp({ Component, pageProps, categories, sliders }) {
   const mounted = useRef(false)
 
   useEffect(() => {
@@ -46,9 +47,9 @@ function MyApp({ Component, pageProps, categories }) {
 
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Layout {...{categories}}>
+        <Layout {...{categories, sliders}}>
           <Alert />
-          <Component {...pageProps} {...{categories}} />
+          <Component {...pageProps} {...{ categories, sliders }} />
         </Layout>
       </ThemeProvider>
       <div id="modal-root" />
@@ -60,10 +61,12 @@ MyApp.getInitialProps = async (context) => {
   const appProps = await App.getInitialProps(context)
 
   const categories = await categoryService.findAll()
+  const sliders = await sliderService.findAll()
 
   return {
     ...appProps,
-    categories
+    categories,
+    sliders
   }
 }
 

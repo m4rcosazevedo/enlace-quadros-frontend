@@ -4,7 +4,7 @@ import { Slider } from '../slider/slider'
 import { Nav } from '../nav/nav'
 import Head from 'next/head'
 
-export const Layout = ({ children, categories }) => (
+export const Layout = ({ children, categories, sliders }) => (
   <>
     <Head>
       <title>Enlace Quadros</title>
@@ -15,7 +15,7 @@ export const Layout = ({ children, categories }) => (
     <Header />
 
     <Nav menus={categories.body?.data} />
-    <Slider />
+    <Slider sliders={sliders.body?.data} />
     <main>{children}</main>
 
     <footer className="py-3 mt-3 bg-dark text-light text-center">
